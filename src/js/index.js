@@ -38,6 +38,5 @@ function themeChange(){
   document.body.classList.remove(Theme.LIGHT);
   localStorage.setItem('my-data', JSON.stringify(Theme.DARK));
 };
-const menuMarkup = menuCardTpl(menus);
-palleteContainer.insertAdjacentHTML('beforeend', menuMarkup);
+
 }
