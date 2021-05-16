@@ -38,6 +38,6 @@ function themeChange(){
   document.body.classList.remove(Theme.LIGHT);
   localStorage.setItem('my-data', JSON.stringify(Theme.DARK));
 };
-function createMenuCards(menus){
- return menus.map(menuCardTpl).join('')
+const menuMarkup = menuCardTpl(menus);
+palleteContainer.insertAdjacentHTML('beforeend', menuMarkup);
 }
