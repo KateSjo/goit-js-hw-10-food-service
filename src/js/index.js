@@ -13,6 +13,12 @@ const Theme = {
 const switchTheme = document.querySelector('#theme-switch-toggle');
 const body = document.body;
 
+body.classList.add(
+  localStorage.getItem('theme') === null
+  ? Theme.LIGHT
+  : localStorage.getItem('theme'),
+  );
+
 if (localStorage.getItem('theme') === Theme.DARK) {
     body.classList.add(Theme.DARK);
     switchTheme.checked = true;
