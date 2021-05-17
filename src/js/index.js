@@ -2,41 +2,35 @@
 import menus from './menu.json';
 import menuCardTpl from '../templates/menu-card.hbs';
 //DATA
+const menuGallery = document.querySelector('.js-menu');
+menuGallery.insertAdjacentHTML('afterbegin', menuTemlate(menu));
+
 const Theme = {
-    LIGHT: 'light-theme',
-    DARK: 'dark-theme',
-  };
-
- const themeToggler = document.getElementById('theme-switch-toggle');
- //Listeners//
- const palleteComtainer = document.querySelector('.js-menu');
- const onTogglerChange = themeToggler.addEventListener('change', themeChange);
- const menuMarkup = createMenuCards(menus);
- palleteComtainer.insertAdjacentHTML('beforeend' , menuMarkup);
- 
- 
- 
-
- //localStorage//
- const savedData = localStorage.getItem('my-data');
- const parsedData = JSON.parse(savedData);
- document.body.classList.add(parsedData);
- if(document.body.classList.contains(Theme.DARK)){
-    themeToggler.checked = true;
- }
-
-//function//
-
-function themeChange(){
-    if(document.body.classList.contains(Theme.DARK)|| document.body.classList === ''){
-        document.body.classList.toggle(Theme.LIGHT);
-        document.body.classList.remove(Theme.DARK);
-        localStorage.setItem('my-data', JSON.stringify(Theme.LIGHT));
-        return
-    }
-  document.body.classList.toggle(Theme.DARK);
-  document.body.classList.remove(Theme.LIGHT);
-  localStorage.setItem('my-data', JSON.stringify(Theme.DARK));
+  LIGHT: 'light-theme',
+  DARK: 'dark-theme',
 };
 
+const switchTheme = document.querySelector('#theme-switch-toggle');
+const body = document.body;
+
+if (localStorage.getItem('theme') === Theme.DARK) {
+    body.classList.add(Theme.DARK);
+    switchTheme.checked = true;
+}
+else {
+    body.classList.add(Theme.LIGHT);
+    switchTheme.checked = false;  
+}
+switchTheme.addEventListener('change', changeTheme);
+function changeTheme(evt) {
+    if (evt.target.checked) {
+        localStorage.setItem('theme', Theme.DARK);
+        body.classList.remove(...body.classList);
+        body.classList.add(localStorage.getItem('theme'));
+    }
+    else {
+        localStorage.setItem('theme', Theme.LIGHT);
+        body.classList.remove(...body.classList);
+        body.classList.add(Theme.LIGHT);
+    }
 }
