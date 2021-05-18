@@ -15,11 +15,11 @@ const body = document.body;
 
 if (localStorage.getItem('theme') === Theme.DARK) {
     switchTheme.checked = true;
-	changeTheme({target: {checked: true});
+	changeTheme({target: {checked: true}});
 }
 else {
     switchTheme.checked = false;
-	changeTheme({target: {checked: false});
+	changeTheme({target: {checked: false}});
 }
 
 switchTheme.addEventListener('change', changeTheme);
