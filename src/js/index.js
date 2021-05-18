@@ -1,6 +1,6 @@
 //IMPORTS//
 import menu from './menu.json';
-import menuTemlate from './templates/menu-card.hbs';
+import menuTemlate from '../templates/menu-card.hbs';
 
 const menuGallery = document.querySelector('.js-menu');
 menuGallery.insertAdjacentHTML('afterbegin', menuTemlate(menu));
