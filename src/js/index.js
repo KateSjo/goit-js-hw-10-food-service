@@ -2,8 +2,7 @@
 import menus from './menu.json';
 import menuCardTpl from '../templates/menu-card.hbs';
 //DATA
-const menuGallery = document.querySelector('.js-menu');
-menuGallery.insertAdjacentHTML('afterbegin', menuTemlate(menu));
+
 
 const Theme = {
   LIGHT: 'light-theme',
@@ -13,11 +12,8 @@ const Theme = {
 const switchTheme = document.querySelector('#theme-switch-toggle');
 const body = document.body;
 
-body.classList.add(
-  localStorage.getItem('theme') === null
-  ? Theme.LIGHT
-  : localStorage.getItem('theme'),
-  );
+
+body.classList.add(localStorage.getItem('theme') || Theme.LIGHT);
 
 if (localStorage.getItem('theme') === Theme.DARK) {
     body.classList.add(Theme.DARK);
