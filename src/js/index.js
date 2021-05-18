@@ -14,13 +14,14 @@ const switchTheme = document.querySelector('#theme-switch-toggle');
 const body = document.body;
 
 if (localStorage.getItem('theme') === Theme.DARK) {
-    body.classList.add(Theme.DARK);
     switchTheme.checked = true;
+	changeTheme({target: {checked: true});
 }
 else {
-    body.classList.add(Theme.LIGHT);
-    switchTheme.checked = false;  
+    switchTheme.checked = false;
+	changeTheme({target: {checked: false});
 }
+
 switchTheme.addEventListener('change', changeTheme);
 function changeTheme(evt) {
     if (evt.target.checked) {
